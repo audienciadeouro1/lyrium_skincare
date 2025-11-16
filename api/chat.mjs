@@ -1,6 +1,3 @@
-$env:GOOGLE_API_KEY = "AIzaSyCE4pvWuu5rgPHvGgNLiRETve_WRcvsHIc"
-// No arquivo /api/chat.mjs (note o .mjs para import/export)
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Pega a sua Chave Secreta das "Variáveis de Ambiente" (explicarei abaixo)

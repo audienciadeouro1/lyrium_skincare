@@ -1,0 +1,23 @@
+A implementação para o chatbot responder às perguntas foi concluída.
+
+Para que o chatbot funcione corretamente, você precisa configurar sua chave de API do Gemini. Por favor, siga um destes passos:
+
+1.  **Recomendado (Variável de Ambiente):** Defina a variável de ambiente `GEMINI_API_KEY` com sua chave de API do Gemini.
+    *   **No Windows (Prompt de Comando):** `set GEMINI_API_KEY=SUA_CHAVE_AQUI`
+    *   **No Linux/macOS (Terminal):** `export GEMINI_API_KEY=SUA_CHAVE_AQUI`
+    *   (Substitua `SUA_CHAVE_AQUI` pela sua chave real da API do Gemini.)
+
+2.  **Alternativo (Diretamente no Código):** Abra o arquivo `server/index.ts` e substitua `"YOUR_API_KEY"` pela sua chave de API do Gemini.
+
+Após configurar a chave, você precisará reconstruir e reiniciar o servidor para que as alterações entrem em vigor.
+
+Para reconstruir o projeto:
+`pnpm run build`
+
+Para iniciar o servidor:
+`pnpm run start`
+
+Se você estiver em ambiente de desenvolvimento, pode usar:
+`pnpm run dev`
+
+Por favor, me avise se precisar de mais alguma ajuda!
