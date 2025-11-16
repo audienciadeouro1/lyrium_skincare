@@ -116,19 +116,19 @@ export default function Catalog() {
     <div className="min-h-screen flex flex-col bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 header-bg/95 backdrop-blur supports-[backdrop-filter]:header-bg/60 border-b border-muted" style={{backgroundColor: '#c8d6c9'}}>
-        <div className="container flex items-center justify-between h-20">
+        <div className="container flex items-center justify-between h-20" style={{paddingRight: '165px'}}>
           <div className="flex items-center gap-2">
             <a href="/">
-              <img src="/logo-main.png" alt="Lyrium" className="h-20 w-auto" />
+              <img src="/logo-main.png" alt="Lyrium" className="w-auto" style={{marginLeft: '40px', height: '148.75px'}} />
             </a>
           </div>
           <nav className="hidden md:flex items-center gap-8">
-            <a href="/catalog" className="text-sm text-foreground hover:text-accent transition-colors font-semibold">Catálogo</a>
+            <a href="/catalog" className="text-sm text-foreground hover:text-accent transition-colors">Catálogo</a>
             <a href="/#serum" className="text-sm text-foreground hover:text-accent transition-colors">Sobre o Sérum</a>
             <a href="/#kits" className="text-sm text-foreground hover:text-accent transition-colors">Kits Rituais</a>
             <a href="/#testimonials" className="text-sm text-foreground hover:text-accent transition-colors">Depoimentos</a>
           </nav>
-          <Button className="btn-primary">Comprar Agora</Button>
+          <Button className="btn-primary" style={{backgroundColor: '#668f7a'}}>Comprar Agora</Button>
         </div>
       </header>
 

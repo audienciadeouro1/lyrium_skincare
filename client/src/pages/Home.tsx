@@ -9,7 +9,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 header-bg/95 backdrop-blur supports-[backdrop-filter]:header-bg/60 border-b border-muted" style={{backgroundColor: '#c8d6c9'}}>
         <div className="container flex items-center justify-between h-20" style={{paddingRight: '165px'}}>
           <div className="flex items-center gap-2">
-            <img src="/logo-main.png" alt="Lyrium" className="w-auto" style={{marginLeft: '40px', height: '119px'}} />
+            <img src="/logo-main.png" alt="Lyrium" className="w-auto" style={{marginLeft: '40px', height: '148.75px'}} />
           </div>
           <nav className="hidden md:flex items-center gap-8">
             <a href="/catalog" className="text-sm text-foreground hover:text-accent transition-colors">Catálogo</a>
