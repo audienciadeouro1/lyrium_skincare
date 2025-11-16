@@ -55,6 +55,11 @@ export function ExpandableChatDemo() {
           content: msg.content,
         }));
 
+      console.log('Enviando mensagem para API...', { 
+        message: userInput, 
+        historyLength: conversationHistory.length 
+      });
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
@@ -66,11 +71,20 @@ export function ExpandableChatDemo() {
         }),
       });
 
+      console.log('Resposta recebida:', response.status, response.statusText);
+
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Erro na resposta da API:', errorData);
+        throw new Error(`Erro ${response.status}: ${errorData.error || response.statusText}`);
       }
 
       const data = await response.json();
+      console.log('Dados recebidos da API:', data);
+      
+      if (!data.reply) {
+        throw new Error('Resposta vazia da API');
+      }
       
       // Add AI response to chat
       setMessages((prev) => [
@@ -82,13 +96,34 @@ export function ExpandableChatDemo() {
         },
       ]);
 
-    } catch (error) {
-      console.error('Failed to fetch response:', error);
+    } catch (error: any) {
+      console.error('Erro ao buscar resposta:', error);
+      console.error('Detalhes do erro:', {
+        message: error?.message,
+        stack: error?.stack,
+        response: error?.response
+      });
+      
+      // Tentar obter mais detalhes do erro
+      let errorMessage = "Desculpe, não consegui processar sua mensagem no momento. Por favor, tente novamente.";
+      
+      if (error?.response) {
+        try {
+          const errorData = await error.response.json();
+          console.error('Dados do erro da API:', errorData);
+          if (errorData.message) {
+            errorMessage = `Erro: ${errorData.message}`;
+          }
+        } catch (e) {
+          // Ignorar erro ao fazer parse
+        }
+      }
+      
       setMessages((prev) => [
         ...prev,
         {
           id: prev.length + 1,
-          content: "Desculpe, não consegui processar sua mensagem no momento. Por favor, tente novamente.",
+          content: errorMessage,
           sender: "ai",
         },
       ]);
