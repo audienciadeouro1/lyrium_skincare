@@ -1,10 +1,8 @@
 {
-  "buildCommand": "pnpm run build:static",
+  "buildCommand": "pnpm exec vite build",
   "outputDirectory": "dist/public",
-  "framework": null,
+  "framework": "vite",
   "installCommand": "pnpm install",
-  "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/(.*)",
