@@ -1,4 +1,4 @@
 dist/index.js
-server/
 dist/index.js.map
-
+server/
+dist/server/
