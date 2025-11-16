@@ -1,0 +1,37 @@
+$env:GOOGLE_API_KEY = "AIzaSyCE4pvWuu5rgPHvGgNLiRETve_WRcvsHIc"
+// No arquivo /api/chat.mjs (note o .mjs para import/export)
+
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+// Pega a sua Chave Secreta das "Variáveis de Ambiente" (explicarei abaixo)
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+// Esta é a "função" que a Vercel vai rodar
+export default async function handler(request, response) {
+  if (request.method !== 'POST') {
+    // Só aceita pedidos "POST"
+    return response.status(405).json({ error: 'Method Not Allowed' });
+  }
+
+  // 1. Pega o "pedido" (a mensagem) do Garçom
+  const { message } = request.body;
+
+  if (!message) {
+    return response.status(400).json({ error: 'Message is required' });
+  }
+
+  try {
+    // 2. Prepara o pedido para o "Chef"
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const result = await model.generateContent(message);
+    const aiResponse = await result.response;
+    const text = aiResponse.text();
+
+    // 3. Devolve a resposta do "Chef" para o "Garçom"
+    response.status(200).json({ reply: text });
+
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: 'Failed to get response from AI' });
+  }
+}
