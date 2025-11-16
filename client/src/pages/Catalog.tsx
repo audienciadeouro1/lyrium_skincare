@@ -84,9 +84,18 @@ const PRODUCTS = [
     description: "Cafeína + Peptídeos para olheiras e rugas. Olhar descansado.",
     ingredients: "Cafeína, Peptídeos, Vitamina K",
   },
+  {
+    id: 10,
+    name: "Elixir Noturno Reparador",
+    category: "Tratamento",
+    price: 149.90,
+    image: "/product-elixir-noturno.png",
+    description: "Retinol + Peptídeos. Reparação intensa e renovação celular durante a noite.",
+    ingredients: "Retinol, Peptídeos, Ácido Hialurônico",
+  },
 ];
 
-const CATEGORIES = ["Todos", "Limpeza", "Tratamento", "Hidratação", "Proteção"];
+const CATEGORIES = ["Todos", "Limpeza", "Tratamento", "Hidratação", "Proteção", "Noite"];
 
 export default function Catalog() {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
